@@ -16,7 +16,7 @@ function App() {
         <div className="max-w-7xl py-8 mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="font-bold text-white text-lg mb-4">EasyEnglish</h3>
+              <h3 className="font-bold text-white text-lg mb-4">Shiksha Setu</h3>
               <p className="text-gray-400">
                 Making English learning accessible and enjoyable for elderly learners.
               </p>
@@ -31,7 +31,7 @@ function App() {
             <div>
               <h3 className="font-bold text-white text-lg mb-4">Contact Us</h3>
               <p className="text-gray-400 hover:text-white">
-                📧 support@easyenglish.com<br />
+                📧 support@ShikshaSetu.com<br />
                 📞 +91 1234567890
               </p>
             </div>
