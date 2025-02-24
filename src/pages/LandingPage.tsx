@@ -118,7 +118,7 @@ export function LandingPage() {
         </div> */}
       </header>
       
-      <div className='mt-[50%]'>
+      <div className='mt-[45%]'>
         <AboutUs />
       </div>
       {/* Testimonials Section */}

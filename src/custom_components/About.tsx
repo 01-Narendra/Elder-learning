@@ -5,7 +5,7 @@ const AboutUs = () => {
       <div className="max-w-6xl px-6 mb-5 md:py-12 text-center">
         
         <h2 className="text-4xl font-semibold text-black rounded-lg shadow-blue-400 p-2 shadow-md mb-10">Our Mission</h2>
-        <p className="text-gray-600 italic mb-6">
+        <p className="text-gray-600 font-khand italic text-xl mb-6">
           " Shiksha Setu Mission is a digital platform empowering underprivileged individuals with free literacy, digital skills, and vocational training. Join us in making education accessible for all!"
         </p>
         
