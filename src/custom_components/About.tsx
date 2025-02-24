@@ -1,18 +1,12 @@
-import React from 'react'
+
 
 const AboutUs = () => {
     return (
-      <div className="max-w-6xl mx-auto px-6 mb-5 md:py-12 text-center">
-        <h1 className="text-4xl font-bold text-gray-800 mb-6">The Story Behind the Shiksha Setu</h1>
+      <div className="max-w-6xl px-6 mb-5 md:py-12 text-center">
         
-        <p className="text-lg text-gray-600 mb-6">
-          Our journey started with a simple yet powerful goal: <span className="font-semibold">Helping elders become independent in English!</span>
-          We understand the challenges elderly learners face and created this platform to make English learning accessible, fun, and effective.
-        </p>
-        
-        <h2 className="text-2xl font-semibold text-gray-700 mt-8 mb-4">Our Mission</h2>
+        <h2 className="text-4xl font-semibold text-black rounded-lg shadow-blue-400 p-2 shadow-md mb-10">Our Mission</h2>
         <p className="text-gray-600 italic mb-6">
-          "Our goal is to make English learning accessible and easy for elderly learners so they can confidently communicate in daily life."
+          " Shiksha Setu Mission is a digital platform empowering underprivileged individuals with free literacy, digital skills, and vocational training. Join us in making education accessible for all!"
         </p>
         
         <div className="bg-blue-100 p-6 rounded-lg shadow-md">

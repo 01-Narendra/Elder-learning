@@ -42,7 +42,7 @@ export const AnimatedTestimonials = ({
   };
   return (
     <div className="max-w-sm md:max-w-6xl mx-auto font-sans px-4 md:px-8 lg:px-12">
-      <h1 className="mb-24 text-center shadow-md p-5 rounded-lg text-black font-khand md:text-5xl text-2xl font-semibold">What Our Learners Say</h1>
+      <h1 className="mb-24 text-center shadow-md shadow-blue-400 p-5 rounded-lg text-black font-khand md:text-5xl text-2xl font-semibold">What Our Learners Say</h1>
       <div className="relative grid grid-cols-1 md:grid-cols-2  gap-20">
         <div>
           <div className="relative h-80 w-full">
@@ -84,7 +84,7 @@ export const AnimatedTestimonials = ({
                     width={500}
                     height={500}
                     draggable={false}
-                    className="h-full w-full rounded-3xl object-cover object-center"
+                    className="h-[90%] w-full rounded-3xl object-cover object-center"
                   />
                 </motion.div>
               ))}
