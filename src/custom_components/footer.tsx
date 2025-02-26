@@ -16,13 +16,13 @@ const Footer = () => {
           <div>
             <h3 className="font-bold text-white text-lg mb-4">Quick Links</h3>
             <ul className="space-y-1">
-              <li><a href="/courses" className="text-gray-400 hover:text-white">Courses</a></li>
-              <li><a href="#contact" className="text-gray-400 hover:text-white">Contact Us</a></li>
+              <li><a href="/courses" className="text-gray-300 hover:text-white">Courses</a></li>
+              <li><a href="#contact" className="text-gray-300 hover:text-white">Contact Us</a></li>
             </ul>
           </div>
           <div>
             <h3 className="font-bold text-white text-lg mb-4">Contact Us</h3>
-            <p className="text-gray-400 hover:text-white">
+            <p className="text-gray-300 hover:text-white">
               📧 support@ShikshaSetu.com<br />
               📞 +91 1234567890
             </p>

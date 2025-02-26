@@ -8,6 +8,9 @@ import AboutUs from '@/custom_components/About';
 import heroImage from '../public/Learn_English.svg'
 import Footer from '@/custom_components/footer';
 import logo from '../public/logo.png'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import elder1 from '../public/elder1.svg'
+
 
 
 const testimonials = [
@@ -63,23 +66,24 @@ export function LandingPage() {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="md:hidden ml-16 p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700"
               >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-7 w-7" />}
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <button > <Menu className='w-6 h-6' /> </button>
+                  </SheetTrigger>
+                  <SheetContent className='bg-gradient-to-b from-[#a1ffce] to-[#faffd1]'> 
+                    <img src={logo} alt="logo" className='h-14 w-14 ml-5' />
+                    <div className="flex flex-col gap-4 p-4">
+                      <MobileNavLink href="/" text="Home" />
+                      <MobileNavLink href="/courses" text="Courses" />
+                      <MobileNavLink href="#testimonials" text="Testimonials" />
+                      <MobileNavLink href="#contact" text="Contact" />
+                    </div>
+                  </SheetContent>
+                </Sheet>
               </button>
             </div>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div onClick={() => setIsMenuOpen(false)} className={`px-2 pt-2 pb-3 space-y-1 bg-blue-950`}>
-              <MobileNavLink href="/" text="Home" />
-              <MobileNavLink href="/courses" text="Courses" />
-              <MobileNavLink href="#testimonials" text="Testimonials" />
-              <MobileNavLink href="#contact" text="Contact" />
-            </div>
-          </div>
-        )}
       </nav>
 
       {/* Hero Section */}
@@ -88,7 +92,7 @@ export function LandingPage() {
           <div className="max-w-7xl flex flex-col gap-10 md:ml-5 md:pt-14 pt-5 mx-auto px-4">
               <p className='md:text-5xl text-4xl text-left font-bold font-suse '>Shiksha Setu – A New Path to Learning </p>
               <p className='text-left font-khand text-xl'>Learning has no age limit! Shiksha Setu empowers elders to explore new skills, embrace knowledge, and stay connected with the world. With simple and engaging lessons, make every day a step towards growth! 🚀 </p>
-              <button onClick={() => naviagte('/courses')} className='rounded-md py-2 text-white text-xl md:text-2xl cursor-pointer shadow-lg shadow-red-500 bg-rose-700 md:w-[30%]'>Start Learning</button>
+              <button onClick={() => naviagte('/courses')} className='rounded-md py-2 mt-6 text-white text-xl md:text-2xl cursor-pointer shadow-lg shadow-red-500 bg-rose-700 md:w-[30%]'>Start Learning</button>
           </div>
           <img src={heroImage} draggable={false} className='absolute overflow-hidden mt-10 ml-5  opacity-[25%] -z-10 object-cover' />
         </div>
@@ -125,7 +129,8 @@ export function LandingPage() {
       <section id="testimonials" className="py-12 mb-5 px-4">
         <AnimatedTestimonials testimonials={testimonials} />
       </section>
-      <div className='flex items-center justify-center mb-10'>
+      <div className='flex relative items-center justify-center mt-36 mb-10'>
+      <img src={elder1} alt="elder img" className='absolute bottom-0 opacity-[50%]' />
         <button onClick={() => naviagte('/courses')} className="bg-gradient-to-r shadow-blue-800 from-blue-500 to-indigo-600 text-white text-lg font-semibold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105">
           Begin Your Journey 🚀
         </button>
