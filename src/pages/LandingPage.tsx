@@ -9,7 +9,7 @@ import heroImage from '../public/Learn_English.svg'
 import Footer from '@/custom_components/footer';
 import logo from '../public/logo.png'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import elder1 from '../public/elder1.svg'
+import elder1 from '../public/elder1-cropped.svg'
 
 
 
@@ -130,7 +130,7 @@ export function LandingPage() {
         <AnimatedTestimonials testimonials={testimonials} />
       </section>
       <div className='flex relative items-center justify-center mt-36 mb-10'>
-      <img src={elder1} alt="elder img" className='absolute bottom-0 opacity-[50%]' />
+      <img src={elder1} alt="elder img" className='absolute bottom-8 opacity-[50%] w-[95%]' />
         <button onClick={() => naviagte('/courses')} className="bg-gradient-to-r shadow-blue-800 from-blue-500 to-indigo-600 text-white text-lg font-semibold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105">
           Begin Your Journey 🚀
         </button>
