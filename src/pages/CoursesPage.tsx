@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import { Book, Volume as VolumeUp, Award, ArrowRight, Home, School, Brain, GraduationCap, BookOpen, MessageSquare, CheckCircle2, XCircle, MoveLeft, ArrowLeft } from 'lucide-react';
+import { Book, Volume as VolumeUp, Award, ArrowRight, School, Brain, GraduationCap, BookOpen, Menu } from 'lucide-react';
+import logo from '../public/logo.png'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { MobileNavLink } from '@/custom_components/Navlink';
+
 
 function CoursesPage() {
   const [currentLesson, setCurrentLesson] = useState(0);
   const [showBasicLetters, setShowBasicLetters] = useState(false);
   const [showSimpleWords, setShowSimpleWords] = useState(false);
   const [showInteractiveLearning, setShowInteractiveLearning] = useState(false);
-  const [currentScenario, setCurrentScenario] = useState(0);
-  const [userAnswer, setUserAnswer] = useState('');
-  const [showFeedback, setShowFeedback] = useState(false);
+  const [currentScenario, setCurrentScenario] = useState<number>(0);
 
   function SpeakWords(paragraph: string) {
     const words = paragraph.split(" "); // शब्दों को अलग करो
@@ -54,15 +56,6 @@ function Speak(text: string) {
   // speakAll(text);
 }
 
-const SetAnwers = (e: any) => {
-  e.preventDefault();
-  const answer = e.target.value;
-  setUserAnswer(answer);
-}
-
-
-
-
 
 const letters = [
   { letter: 'A', word: 'Apple', image: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=400' },
@@ -71,59 +64,92 @@ const letters = [
   { letter: 'D', word: 'Dog', image: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=400' },
   { letter: 'E', word: 'Elephant', image: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=400' },
   { letter: 'F', word: 'Fish', image: 'https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=400' },
-  { letter: 'G', word: 'Grapes', image: 'https://images.unsplash.com/photo-1615485299673-0704322644de?auto=format&fit=crop&w=400' },
+  { letter: 'G', word: 'Grapes', image: 'https://images.unsplash.com/photo-1625499940894-8796928bf9c4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Z3JhcGVzfGVufDB8fDB8fHww' },
   { letter: 'H', word: 'House', image: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=400' },
-  { letter: 'I', word: 'Ice Cream', image: 'https://images.unsplash.com/photo-1606755962774-bb98fc802f28?auto=format&fit=crop&w=400' },
-  { letter: 'J', word: 'Juice', image: 'https://images.unsplash.com/photo-1571781926291-c4775f17e5de?auto=format&fit=crop&w=400' },
-  { letter: 'K', word: 'Kite', image: 'https://images.unsplash.com/photo-1610912823420-6cc41c307391?auto=format&fit=crop&w=400' },
-  { letter: 'L', word: 'Lion', image: 'https://images.unsplash.com/photo-1580048915913-3c5c52e4745e?auto=format&fit=crop&w=400' },
-  { letter: 'M', word: 'Mango', image: 'https://images.unsplash.com/photo-1590239519648-1b1ca556bb66?auto=format&fit=crop&w=400' },
-  { letter: 'N', word: 'Nest', image: 'https://images.unsplash.com/photo-1579446261476-c36e6cccc485?auto=format&fit=crop&w=400' },
-  { letter: 'O', word: 'Orange', image: 'https://images.unsplash.com/photo-1610320877162-2ff7b7115452?auto=format&fit=crop&w=400' },
-  { letter: 'P', word: 'Parrot', image: 'https://images.unsplash.com/photo-1519410748251-68db508e19e5?auto=format&fit=crop&w=400' },
-  { letter: 'Q', word: 'Queen', image: 'https://images.unsplash.com/photo-1625671047857-d4395d8ef5f5?auto=format&fit=crop&w=400' },
-  { letter: 'R', word: 'Rabbit', image: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=400' },
-  { letter: 'S', word: 'Sun', image: 'https://images.unsplash.com/photo-1474219822684-df5535e0c2e7?auto=format&fit=crop&w=400' },
+  { letter: 'I', word: 'Ice Cream', image: 'https://images.unsplash.com/photo-1488900128323-21503983a07e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGljZSUyMGNyZWFtfGVufDB8fDB8fHww' },
+  { letter: 'J', word: 'Juice', image: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8fDA%3D' },
+  { letter: 'K', word: 'Kite', image: 'https://images.unsplash.com/photo-1534640881905-039ca1e21a81?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGtpdGV8ZW58MHx8MHx8fDA%3D' },
+  { letter: 'L', word: 'Lion', image: 'https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGlvbnxlbnwwfHwwfHx8MA%3D%3D' },
+  { letter: 'M', word: 'Mango', image: 'https://plus.unsplash.com/premium_photo-1724255863045-2ad716767715?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFuZ298ZW58MHx8MHx8fDA%3D' },
+  { letter: 'N', word: 'Nest', image: 'https://images.unsplash.com/photo-1504980927740-d1cc11dccf63?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmVzdHxlbnwwfHwwfHx8MA%3D%3D' },
+  { letter: 'O', word: 'Orange', image: 'https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlfGVufDB8fDB8fHww' },
+  { letter: 'P', word: 'Parrot', image: 'https://plus.unsplash.com/premium_photo-1673454201378-3867e051dca7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGFycm90fGVufDB8fDB8fHww' },
+  { letter: 'Q', word: 'Queen', image: 'https://plus.unsplash.com/premium_photo-1695792938224-4fd327c05097?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cXVlZW58ZW58MHx8MHx8fDA%3D' },
+  { letter: 'R', word: 'Rabbit', image: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmFiYml0fGVufDB8fDB8fHww' },
+  { letter: 'S', word: 'Sun', image: 'https://plus.unsplash.com/premium_photo-1681488104322-8bd081b57509?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHN1bnxlbnwwfHwwfHx8MA%3D%3D' },
   { letter: 'T', word: 'Tree', image: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=400' },
-  { letter: 'U', word: 'Umbrella', image: 'https://images.unsplash.com/photo-1595436065982-e4b24a18db83?auto=format&fit=crop&w=400' },
-  { letter: 'V', word: 'Violin', image: 'https://images.unsplash.com/photo-1562094587-9f8b6479a463?auto=format&fit=crop&w=400' },
-  { letter: 'W', word: 'Watch', image: 'https://images.unsplash.com/photo-1535269446895-d6eff7a6a6cc?auto=format&fit=crop&w=400' },
-  { letter: 'X', word: 'Xylophone', image: 'https://images.unsplash.com/photo-1602788776798-68d952a6e6ed?auto=format&fit=crop&w=400' },
-  { letter: 'Y', word: 'Yogurt', image: 'https://images.unsplash.com/photo-1614592599576-1e89eb469dbe?auto=format&fit=crop&w=400' },
-  { letter: 'Z', word: 'Zebra', image: 'https://images.unsplash.com/photo-1595433562690-12c61d38f4fc?auto=format&fit=crop&w=400' }
+  { letter: 'U', word: 'Umbrella', image: 'https://images.unsplash.com/photo-1541697183324-e15d407c91cf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dW1icmVsbGF8ZW58MHx8MHx8fDA%3D' },
+  { letter: 'V', word: 'Violin', image: 'https://plus.unsplash.com/premium_photo-1681277984980-cfe335a4371b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dmlvbGlufGVufDB8fDB8fHww' },
+  { letter: 'W', word: 'Watch', image: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2F0Y2h8ZW58MHx8MHx8fDA%3D' },
+  { letter: 'X', word: 'Xylophone', image: 'https://images.unsplash.com/photo-1613941883931-f231c2153e41?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8eHlsb3Bob25lfGVufDB8fDB8fHww' },
+  { letter: 'Y', word: 'Yak', image: 'https://images.unsplash.com/photo-1549874682-13ffd26ee224?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8eWFrfGVufDB8fDB8fHww' },
+  { letter: 'Z', word: 'Zebra', image: 'https://plus.unsplash.com/premium_photo-1661855211054-080ea7944065?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8emVicmVhfGVufDB8fDB8fHww' }
 ];
 
 
-  const simpleWords = [
-    {
-      word: 'Cat',
-      phonetic: 'k-æ-t',
-      image: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=400',
-      sentence: 'The cat is sleeping.',
-      difficulty: 'Easy'
-    },
-    {
-      word: 'Dog',
-      phonetic: 'd-ɒ-g',
-      image: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=400',
-      sentence: 'The dog plays ball.',
-      difficulty: 'Easy'
-    },
-    {
-      word: 'House',
-      phonetic: 'h-aʊ-s',
-      image: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=400',
-      sentence: 'This is my house.',
-      difficulty: 'Medium'
-    },
-    {
-      word: 'Tree',
-      phonetic: 't-r-iː',
-      image: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=400',
-      sentence: 'The tree is tall.',
-      difficulty: 'Easy'
-    }
-  ];
+const simpleWords = [
+  {
+    word: 'Cat',
+    image: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=400',
+    sentence: 'The cat is sleeping.',
+    difficulty: 'Easy'
+  },
+  {
+    word: 'Dog',
+    image: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=400',
+    sentence: 'The dog plays ball.',
+    difficulty: 'Easy'
+  },
+  {
+    word: 'House',
+    image: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=400',
+    sentence: 'This is my house.',
+    difficulty: 'Medium'
+  },
+  {
+    word: 'Tree',
+    image: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=400',
+    sentence: 'The tree is tall.',
+    difficulty: 'Easy'
+  },
+  {
+    word: 'Car',
+    image: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=400',
+    sentence: 'The car is fast.',
+    difficulty: 'Easy'
+  },
+  {
+    word: 'Book',
+    image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400',
+    sentence: 'She reads a book.',
+    difficulty: 'Easy'
+  },
+  {
+    word: 'Apple',
+    image: 'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=400',
+    sentence: 'He eats an apple.',
+    difficulty: 'Easy'
+  },
+  {
+    word: 'Chair',
+    image: 'https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?auto=format&fit=crop&w=400',
+    sentence: 'The chair is wooden.',
+    difficulty: 'Easy'
+  },
+  {
+    word: 'Bicycle',
+    image: 'https://plus.unsplash.com/premium_photo-1683121324815-a75a7332213d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YnljeWNsZXxlbnwwfHwwfHx8MA%3D%3D',
+    sentence: 'She rides a bicycle.',
+    difficulty: 'Medium'
+  },
+  {
+    word: 'Sun',
+    image: 'https://plus.unsplash.com/premium_photo-1681488104322-8bd081b57509?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHN1bnxlbnwwfHwwfHx8MA%3D%3D',
+    sentence: 'The sun is shining.',
+    difficulty: 'Easy'
+  }
+];
+
   
 
   const dailyScenarios = [
@@ -192,17 +218,6 @@ const letters = [
     }
   ];
 
-  const checkAnswer = () => {
-    setShowFeedback(true);
-    setTimeout(() => {
-      setShowFeedback(false);
-      if (userAnswer.toLowerCase().includes(dailyScenarios[currentScenario].practice.correctAnswer.toLowerCase())) {
-        setCurrentScenario((prev) => (prev + 1) % dailyScenarios.length);
-        setUserAnswer('');
-      }
-    }, 2000);
-  };
-
   const features = [
     { icon: <Book className="w-8 h-8" />, title: 'Basic Letters', description: 'Learn the alphabet step by step' },
     { icon: <School className="w-8 h-8" />, title: 'Simple Words', description: 'Start reading basic words' },
@@ -211,13 +226,13 @@ const letters = [
 
   const InteractiveLearningPage = () => (
     <div className="max-w-7xl mx-auto px-4 py-12">
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex mt-10 items-center justify-between mb-8">
         <h2 className="text-3xl font-bold text-gray-900">Interactive Learning</h2>
         <button
           onClick={() => setShowInteractiveLearning(false)}
           className="bg-blue-600 text-white px-6 py-2 rounded-full flex items-center space-x-2 hover:bg-blue-700 transition-colors"
         >
-          <span> Back to Home</span>
+          <ArrowRight className='w-5 h-5 rotate-180' /> <span>Back</span>
         </button>
       </div>
 
@@ -251,18 +266,23 @@ const letters = [
           <p className="text-lg text-gray-700 mb-4">{dailyScenarios[currentScenario].practice.question}</p>
           </div>
         </div>
+
+        <div className='flex items-center mt-5 justify-between'>
+          <button className='bg-blue-600 py-3 px-5 font-semibold text-white rounded-full flex flex-row items-center space-x-2' onClick={() => setCurrentScenario((prev) => (prev > 0 ? prev - 1 : dailyScenarios.length - 1))}> <ArrowRight className='w-5 h-5 rotate-180' /> <span>Prev</span></button>
+          <button className='bg-blue-600 py-3 px-5 font-semibold text-white rounded-full flex flex-row items-center space-x-2' onClick={() => setCurrentScenario((prev) => (prev < dailyScenarios.length-1 ? prev + 1 : 0))}> <span>Next</span> <ArrowRight className='w-5 h-5' /></button>
+        </div>
       </div>
   );
 
   const SimpleWordsPage = () => (
     <div className="max-w-7xl mx-auto px-4 py-12">
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex mt-10 items-center justify-between mb-8">
         <h2 className="text-3xl font-bold text-gray-900">Simple Words</h2>
         <button
           onClick={() => setShowSimpleWords(false)}
           className="bg-blue-600 text-white px-6 py-2 rounded-full flex items-center space-x-2 hover:bg-blue-700 transition-colors"
         >
-          <span>Back to Home</span>
+          <ArrowRight className='w-5 h-5 rotate-180' /> <span>Back</span>
         </button>
       </div>
 
@@ -309,18 +329,21 @@ const letters = [
           </div>
         ))}
       </div>
+      <div onClick={() => setShowSimpleWords(false)} className='flex items-center space-x-2 text-white mt-10 py-3 px-4 bg-blue-600 rounded-full w-[30%] ml-[67%] justify-center'>
+        <ArrowRight className='w-5 h-5 rotate-180' /> <span>Back</span>
+      </div>
     </div>
   );
 
   const BasicLettersPage = () => (
     <div className="max-w-7xl mx-auto px-4 py-12">
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex mt-10 items-center justify-between mb-8">
         <h2 className="text-3xl font-bold text-gray-900">Basic Letters</h2>
         <button
           onClick={() => setShowBasicLetters(false)}
           className="bg-blue-600 text-white px-6 py-2 rounded-full flex items-center space-x-2 hover:bg-blue-700 transition-colors"
         >
-          <span>Back to Home</span>
+          <ArrowRight className='w-5 h-5 rotate-180' /> <span>Back</span>
         </button>
       </div>
 
@@ -348,13 +371,19 @@ const letters = [
           </div>
         ))}
       </div>
+      <button
+          onClick={() => setShowBasicLetters(false)}
+          className="bg-blue-600 text-white px-6 py-2 mt-10 ml-[67%] rounded-full flex items-center space-x-2 hover:bg-blue-700 transition-colors"
+        >
+          <ArrowRight className='w-5 h-5 rotate-180' /> <span>Back</span>
+        </button>
     </div>
   );
 
   const MainContent = () => (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="text-center mb-16">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Learn to Read and Write</h1>
+        <h1 className="text-4xl mt-10 font-bold text-gray-900 mb-4">Learn to Read and Write</h1>
         <p className="text-xl text-gray-600">Start your journey to literacy today</p>
       </div>
 
@@ -433,14 +462,26 @@ const letters = [
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <nav className="bg-white shadow-md">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-center">
-          <div className="flex items-center  space-x-2">
-            <Home className="w-6 h-6 text-blue-600" />
-            <span className="text-xl font-bold text-blue-600">Literacy For All</span>
-          </div>
+    <div className="bg-gradient-to-b from-blue-50 to-white">
+      <nav className="bg-white z-50 flex py-2 px-4 fixed w-full flex-row justify-between shadow-md">
+        <div className="flex items-center justify-center space-x-2">
+          <img src={logo} alt="logo" className='h-12 w-12 ' />
+          <span className="text-lg transform scale-y-150 font-bold text-blue-600">Literacy For All</span>
         </div>
+        <Sheet>
+          <SheetTrigger asChild>
+            <button > <Menu className='w-6 h-6' /> </button>
+          </SheetTrigger>
+          <SheetContent className='bg-gradient-to-b from-[#a1ffce] to-[#faffd1]'> 
+            <img src={logo} alt="logo" className='h-14 w-14 ml-5' />
+            <div className="flex flex-col gap-4 p-4">
+              <MobileNavLink href="/" text="Home" />
+              <MobileNavLink href="/courses" text="Courses" />
+              <MobileNavLink href="/#testimonials" text="Testimonials" />
+              <MobileNavLink href="/#contact" text="Contact" />
+            </div>
+          </SheetContent>
+        </Sheet>
       </nav>
 
       {showBasicLetters ? <BasicLettersPage /> : 

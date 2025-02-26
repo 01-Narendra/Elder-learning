@@ -45,7 +45,7 @@ export const AnimatedTestimonials = ({
       <h1 className="mb-24 text-center shadow-md shadow-blue-400 p-5 rounded-lg text-black font-khand md:text-5xl text-2xl font-semibold">What Our Learners Say</h1>
       <div className="relative grid grid-cols-1 md:grid-cols-2  gap-20">
         <div>
-          <div className="relative h-80 w-full">
+          <div className="relative z-30 h-80 w-full">
             <AnimatePresence>
               {testimonials.map((testimonial, index) => (
                 <motion.div
