@@ -17,7 +17,7 @@ const testimonials = [
   {
     name: "Ramesh, Shiksha Setu Learner",
     quote: "“At 65, I realized how much I had missed by not knowing how to read and write. Thanks to Shiksha Setu Mission, I can now read newspapers, write letters, and even sign my name with pride. Learning at this age has given me a new sense of independence and confidence. It’s never too late to start!”",
-    src: "https://plus.unsplash.com/premium_photo-1689977968861-9c91dbb16049?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bWFufGVufDB8fDB8fHww"
+    src: "https://images.unsplash.com/photo-1624140716840-5d89f311f500?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fG1hbnxlbnwwfHwwfHx8MA%3D%3D"
   },
   {
     name: "Raj, Shiksha Setu Learner",

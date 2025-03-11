@@ -3,6 +3,7 @@ import { Book, Volume as VolumeUp, Award, ArrowRight, School, Brain, GraduationC
 import logo from '../public/logo.png'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { MobileNavLink } from '@/custom_components/Navlink';
+import SimpleCard from '@/custom_components/simpleCard';
 
 
 function CoursesPage() {
@@ -224,6 +225,15 @@ const simpleWords = [
     { icon: <Brain className="w-8 h-8" />, title: 'Interactive Learning', description: 'Learn through pictures and sounds' }
   ];
 
+  const courses = [
+    { title : 'Legal & Social Awareness (अधिकार की पहचान)'},
+    { title: 'Vocational & Skill-Based Training (हुनर से रोजगार)'},
+    { title: 'Functional English (बातचीत का हुनर)'},
+    { title: 'Digital Learning (ई-शिक्षा)'},
+    { title: 'Everyday Math (गिनती ज्ञान)'},
+    { title: 'Basic Literacy Course (शब्द समर्थ)'}
+  ]
+
   const InteractiveLearningPage = () => (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="flex mt-10 items-center justify-between mb-8">
@@ -385,6 +395,14 @@ const simpleWords = [
       <div className="text-center mb-16">
         <h1 className="text-4xl mt-10 font-bold text-gray-900 mb-4">Learn to Read and Write</h1>
         <p className="text-xl text-gray-600">Start your journey to literacy today</p>
+      </div>
+
+      <div>
+        {
+          courses.map((item, index) => (
+            <SimpleCard key={index} title={item.title} />
+          ))
+        }
       </div>
 
       <div className="grid md:grid-cols-3 gap-8 mb-16">
